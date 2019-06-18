@@ -1,2 +1,2 @@
-# cyberwarepulse.github.io-
+# cyberwarepulse.github.io
 Cyberware Pulse Website
