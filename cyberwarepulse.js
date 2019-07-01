@@ -143,21 +143,22 @@ var terminal = (function() {
                     cli.interpreter(stdOut,cmdInput);
                     cmdHistory.commands.push(cmdInput.value);
                     cmdHistory.index++;
-                    ga("send", "event", "CLI", "Command", cmdInput.value);
+                    let cmdCopy = (' ' + cmd).slice(1);
+                    setTimeout(function(){ga("send", "event", "CLI", "Command", cmdCopy);}, 500);
                 } else if (event.keyCode === 38) {
                     if(cmdHistory.index===0)
                         cmdHistory.index=cmdHistory.commands.length-1;
                     else
                         cmdHistory.index--;
                     cmdInput.value = cmdHistory.commands[cmdHistory.index];
-                    ga("send", "event", "CLI", "History", "--");
+                    setTimeout(function(){ga("send", "event", "CLI", "History", "--");}, 500);
                 } else if (event.keyCode === 40) {
                     if(cmdHistory.index===cmdHistory.commands.length-1)
                         cmdHistory.index=0;
                     else
                         cmdHistory.index++;
                     cmdInput.value = cmdHistory.commands[cmdHistory.index];
-                    ga("send", "event", "CLI", "History", "++");
+                    setTimeout(function(){ga("send", "event", "CLI", "History", "++");}, 500);
                 }
             });
             
