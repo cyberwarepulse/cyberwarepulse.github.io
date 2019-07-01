@@ -128,6 +128,8 @@ var cli = (function() {
 var terminal = (function() {
     return {
         init: function() {
+            privacy.checkCookie();
+
             var stdOut = document.getElementById(config.stdOutElemId);
             stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createUserHost());
             stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createCmdInput());

@@ -36,6 +36,4 @@ var privacy = (function() {
             return "";
           }
     }  
-})();   
-
-window.onload = privacy.checkCookie
+})();
