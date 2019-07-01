@@ -72,6 +72,13 @@ pre {
   align-items: center;
 }
 
+.banner {
+  font-size: 0.7em;
+  height: 30px;
+  display: none;
+  align-items: center;
+}
+
 .smallcontent {
   min-height: 300px;
   font-size: 1em;

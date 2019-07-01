@@ -46,10 +46,11 @@ var commands = (function() {
     return {
         /* External commands section */
         ls: function(stdOut, cmdInput) {
-            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsTotal("2046"));}, 500);
-            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("1003","Jul"," 1","2117","about.html"));}, 600);    
-            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("1043","Jun","12","2117","chapter1.html"));}, 700);    
-            commands.createInput(stdOut, cmdInput, 800);
+            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsTotal("10107"));}, 500);
+            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3453","Jul"," 1","2117","about.html"));}, 600);    
+            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3442","Jun","12","2117","chapter1.html"));}, 700);  
+            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3212","Jun"," 5","2117","privacy.html"));}, 800);  
+            commands.createInput(stdOut, cmdInput, 900);
         },
         browse: function(stdOut, cmdInput, fileName) {
             setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createTextLine("resolving "+fileName+"...",true));}, 500);
@@ -107,7 +108,7 @@ var cli = (function() {
                 commands.clear(stdOut,cmdInput);
             else if(cmdInput.value==="browse" || cmdInput.value.startsWith("browse ")){
                 fileName = cmdInput.value.split(" ")[1];
-                if (['about.html', 'chapter1.html'].indexOf(fileName) >= 0) {
+                if (['about.html', 'chapter1.html', 'privacy.html'].indexOf(fileName) >= 0) {
                     commands.browse(stdOut,cmdInput,fileName);
                 }else
                     commands.error(stdOut,cmdInput,"provide a valid file name, e.g. browse about.html");
