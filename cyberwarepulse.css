@@ -60,21 +60,21 @@ pre {
 
 .menu {
   font-size: 4em;      
-  height: 80px;
+  min-height: 80px;
   display: flex;
   align-items: center;
 }
 
 .header {
   font-size: 2em;
-  height: 80px;
+  min-height: 80px;
   display: flex;
   align-items: center;
 }
 
 .banner {
   font-size: 0.7em;
-  height: 30px;
+  min-height: 30px;
   display: none;
   align-items: center;
 }

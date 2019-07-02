@@ -35,9 +35,12 @@ var htmlBuilder = (function() {
         },
         createHelpLine: function(cmd,help,eg) {
             var line = cmd;
-            while(line.length!=10)
-                line+=" ";
-            return line+"<span class=\"info\">"+help+"</span>"+(eg?"<span class=\"warning\">    "+eg+"</span><br/>":"<br/>");     
+            var spaces = line.length - 5;
+            while(spaces!=5){
+                line+="&nbsp;";
+                spaces++;
+            }
+            return line+"<span class=\"info\">"+help+"</span>"+(eg?"<span class=\"warning\">&nbsp;&nbsp;&nbsp;&nbsp;"+eg+"</span><br/>":"<br/>");     
         },  
     }  
 })();   
@@ -47,9 +50,9 @@ var commands = (function() {
         /* External commands section */
         ls: function(stdOut, cmdInput) {
             setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsTotal("10107"));}, 500);
-            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3453","Jul"," 1","2117","about.html"));}, 600);    
+            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3453","Jul","&nbsp;1","2117","about.html"));}, 600);    
             setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3442","Jun","12","2117","chapter1.html"));}, 700);  
-            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3212","Jun"," 5","2117","privacy.html"));}, 800);  
+            setTimeout(function(){stdOut.insertAdjacentHTML("beforeend",htmlBuilder.createLsLine("3212","Jun","&nbsp;5","2117","privacy.html"));}, 800);  
             commands.createInput(stdOut, cmdInput, 900);
         },
         browse: function(stdOut, cmdInput, fileName) {
@@ -143,7 +146,7 @@ var terminal = (function() {
                     cli.interpreter(stdOut,cmdInput);
                     cmdHistory.commands.push(cmdInput.value);
                     cmdHistory.index++;
-                    let cmdCopy = (' ' + cmd).slice(1);
+                    let cmdCopy = (' ' + cmdInput.value).slice(1);
                     setTimeout(function(){ga("send", "event", "CLI", "Command", cmdCopy);}, 500);
                 } else if (event.keyCode === 38) {
                     if(cmdHistory.index===0)
